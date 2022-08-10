@@ -25,7 +25,7 @@
 	2. Inicie los tres hilos con 'start()'.
 	![image](https://user-images.githubusercontent.com/25957863/184040049-d79ebede-91d2-4e05-84b3-4c42ff4188a7.png)
 	
-	3. Ejecute y revise la salida por pantalla. 
+	3. Ejecute y revise la salida por pantalla.
 	![image](https://user-images.githubusercontent.com/25957863/184040148-f29b8bbb-7f18-4594-bdce-21d4cec2aa7f.png)
 
 	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
