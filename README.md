@@ -23,6 +23,7 @@
 	![image](https://user-images.githubusercontent.com/25957863/184039828-9c629dd9-0bb8-4c50-bc3d-d4803edaa3bb.png)
 
 	2. Inicie los tres hilos con 'start()'.
+
 	![image](https://user-images.githubusercontent.com/25957863/184040049-d79ebede-91d2-4e05-84b3-4c42ff4188a7.png)
 	
 	3. Ejecute y revise la salida por pantalla.
