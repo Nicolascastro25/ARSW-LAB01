@@ -81,11 +81,11 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa.
 
-	![image](https://user-images.githubusercontent.com/25957863/184044162-bf9a5a22-a29e-40d1-8b60-44d99e86f3f6.png)
+![image](https://user-images.githubusercontent.com/25957863/184044162-bf9a5a22-a29e-40d1-8b60-44d99e86f3f6.png)
 
 	* Se sabe que el HOST 212.24.24.55 NO está en ninguna lista negra.
 
-	![image](https://user-images.githubusercontent.com/25957863/184044304-f94d8caa-d287-4677-ae32-d051193c1a3a.png)
+![image](https://user-images.githubusercontent.com/25957863/184044304-f94d8caa-d287-4677-ae32-d051193c1a3a.png)
 
 Tiempo usando hilos:
 	
