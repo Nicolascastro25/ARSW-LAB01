@@ -43,7 +43,6 @@ INTEGRANTES:
 
 La principal diferencia es que cuando el programa llama al método start (), se crea un nuevo subproceso y el código dentro del método run() se ejecuta en el nuevo subproceso, mientras que si llama al método run() directamente, no se crea un nuevo subproceso y el código dentro de run() se ejecutará en el hilo actual.
 
-Read more: https://javarevisited.blogspot.com/2012/03/difference-between-start-and-run-method.html#ixzz7bbrO5Juv
 **Parte II - Ejercicio Black List Search**
 
 
@@ -72,11 +71,30 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 1. Cree una clase de tipo Thread que represente el ciclo de vida de un hilo que haga la búsqueda de un segmento del conjunto de servidores disponibles. Agregue a dicha clase un método que permita 'preguntarle' a las instancias del mismo (los hilos) cuantas ocurrencias de servidores maliciosos ha encontrado o encontró.
 
+![image](https://user-images.githubusercontent.com/25957863/184043865-af70e649-fcce-4355-96e4-f5b07d8a5713.png)
+
 2. Agregue al método 'checkHost' un parámetro entero N, correspondiente al número de hilos entre los que se va a realizar la búsqueda (recuerde tener en cuenta si N es par o impar!). Modifique el código de este método para que divida el espacio de búsqueda entre las N partes indicadas, y paralelice la búsqueda a través de N hilos. Haga que dicha función espere hasta que los N hilos terminen de resolver su respectivo sub-problema, agregue las ocurrencias encontradas por cada hilo a la lista que retorna el método, y entonces calcule (sumando el total de ocurrencuas encontradas por cada hilo) si el número de ocurrencias es mayor o igual a _BLACK_LIST_ALARM_COUNT_. Si se da este caso, al final se DEBE reportar el host como confiable o no confiable, y mostrar el listado con los números de las listas negras respectivas. Para lograr este comportamiento de 'espera' revise el método [join](https://docs.oracle.com/javase/tutorial/essential/concurrency/join.html) del API de concurrencia de Java. Tenga también en cuenta:
+
+![image](https://user-images.githubusercontent.com/25957863/184044005-47ca3156-6180-45b8-80b0-87f1470d4cf5.png)
 
 	* Dentro del método checkHost Se debe mantener el LOG que informa, antes de retornar el resultado, el número de listas negras revisadas VS. el número de listas negras total (línea 60). Se debe garantizar que dicha información sea verídica bajo el nuevo esquema de procesamiento en paralelo planteado.
 
-	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.
+	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa.
+
+	![image](https://user-images.githubusercontent.com/25957863/184044162-bf9a5a22-a29e-40d1-8b60-44d99e86f3f6.png)
+
+	* Se sabe que el HOST 212.24.24.55 NO está en ninguna lista negra.
+
+	![image](https://user-images.githubusercontent.com/25957863/184044304-f94d8caa-d287-4677-ae32-d051193c1a3a.png)
+
+Tiempo usando hilos:
+	
+	![image](https://user-images.githubusercontent.com/25957863/184044433-844c0e64-6822-464f-943a-16eae73e2dfa.png)
+
+	
+Tiempo sin usar hilos:
+
+	![image](https://user-images.githubusercontent.com/25957863/184044444-5eeccdd4-f657-47b9-a6d3-dd527da3cebf.png)
 
 
 **Parte II.I Para discutir la próxima clase (NO para implementar aún)**
