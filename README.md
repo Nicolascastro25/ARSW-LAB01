@@ -41,7 +41,9 @@ INTEGRANTES:
 	!![image](https://user-images.githubusercontent.com/25957863/184040714-b84e95c1-6f96-43d8-b6d5-7dcf117af27d.png)
 	![image](https://user-images.githubusercontent.com/25957863/184040423-0e4c9651-b230-4bd4-9aaa-d41a47f1e943.png)
 
+La principal diferencia es que cuando el programa llama al método start (), se crea un nuevo subproceso y el código dentro del método run() se ejecuta en el nuevo subproceso, mientras que si llama al método run() directamente, no se crea un nuevo subproceso y el código dentro de run() se ejecutará en el hilo actual.
 
+Read more: https://javarevisited.blogspot.com/2012/03/difference-between-start-and-run-method.html#ixzz7bbrO5Juv
 **Parte II - Ejercicio Black List Search**
 
 
