@@ -3,6 +3,10 @@
 ### Arquitecturas de Software - ARSW
 ## Ejercicio Introducción al paralelismo - Hilos - Caso BlackListSearch
 
+# ARSW-LAB01
+INTEGRANTES:
+- Yesid Camilo Mora
+- Jaime Nicolás Castro
 
 ### Dependencias:
 ####   Lecturas:
@@ -16,11 +20,28 @@
 **Parte I - Introducción a Hilos en Java**
 
 1. De acuerdo con lo revisado en las lecturas, complete las clases CountThread, para que las mismas definan el ciclo de vida de un hilo que imprima por pantalla los números entre A y B.
+
+![image](https://user-images.githubusercontent.com/25957863/184039490-e43651da-1afb-43e8-9066-33966e38975b.png)
+
 2. Complete el método __main__ de la clase CountMainThreads para que:
 	1. Cree 3 hilos de tipo CountThread, asignándole al primero el intervalo [0..99], al segundo [99..199], y al tercero [200..299].
+	
+	![image](https://user-images.githubusercontent.com/25957863/184039828-9c629dd9-0bb8-4c50-bc3d-d4803edaa3bb.png)
+
 	2. Inicie los tres hilos con 'start()'.
-	3. Ejecute y revise la salida por pantalla. 
+
+	![image](https://user-images.githubusercontent.com/25957863/184040846-156b2a06-78e4-4db0-b9b4-a468daa4ee71.png)
+
+	3. Ejecute y revise la salida por pantalla.
+	
+	![image](https://user-images.githubusercontent.com/25957863/184040148-f29b8bbb-7f18-4594-bdce-21d4cec2aa7f.png)
+
 	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
+
+	!![image](https://user-images.githubusercontent.com/25957863/184040714-b84e95c1-6f96-43d8-b6d5-7dcf117af27d.png)
+	![image](https://user-images.githubusercontent.com/25957863/184040423-0e4c9651-b230-4bd4-9aaa-d41a47f1e943.png)
+
+La principal diferencia es que cuando el programa llama al método start (), se crea un nuevo subproceso y el código dentro del método run() se ejecuta en el nuevo subproceso, mientras que si llama al método run() directamente, no se crea un nuevo subproceso y el código dentro de run() se ejecutará en el hilo actual.
 
 **Parte II - Ejercicio Black List Search**
 
@@ -50,23 +71,32 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 1. Cree una clase de tipo Thread que represente el ciclo de vida de un hilo que haga la búsqueda de un segmento del conjunto de servidores disponibles. Agregue a dicha clase un método que permita 'preguntarle' a las instancias del mismo (los hilos) cuantas ocurrencias de servidores maliciosos ha encontrado o encontró.
 
+![image](https://user-images.githubusercontent.com/25957863/184043865-af70e649-fcce-4355-96e4-f5b07d8a5713.png)
+
 2. Agregue al método 'checkHost' un parámetro entero N, correspondiente al número de hilos entre los que se va a realizar la búsqueda (recuerde tener en cuenta si N es par o impar!). Modifique el código de este método para que divida el espacio de búsqueda entre las N partes indicadas, y paralelice la búsqueda a través de N hilos. Haga que dicha función espere hasta que los N hilos terminen de resolver su respectivo sub-problema, agregue las ocurrencias encontradas por cada hilo a la lista que retorna el método, y entonces calcule (sumando el total de ocurrencuas encontradas por cada hilo) si el número de ocurrencias es mayor o igual a _BLACK_LIST_ALARM_COUNT_. Si se da este caso, al final se DEBE reportar el host como confiable o no confiable, y mostrar el listado con los números de las listas negras respectivas. Para lograr este comportamiento de 'espera' revise el método [join](https://docs.oracle.com/javase/tutorial/essential/concurrency/join.html) del API de concurrencia de Java. Tenga también en cuenta:
 
-	* Dentro del método checkHost Se debe mantener el LOG que informa, antes de retornar el resultado, el número de listas negras revisadas VS. el número de listas negras total (línea 60). Se debe garantizar que dicha información sea verídica bajo el nuevo esquema de procesamiento en paralelo planteado.
+![image](https://user-images.githubusercontent.com/25957863/184044005-47ca3156-6180-45b8-80b0-87f1470d4cf5.png)
 
-	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.
+Dentro del método checkHost Se debe mantener el LOG que informa, antes de retornar el resultado, el número de listas negras revisadas VS. el número de listas negras total (línea 60). Se debe garantizar que dicha información sea verídica bajo el nuevo esquema de procesamiento en paralelo planteado.
+
+Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa.
+
+![image](https://user-images.githubusercontent.com/25957863/184044162-bf9a5a22-a29e-40d1-8b60-44d99e86f3f6.png)
+
+Se sabe que el HOST 212.24.24.55 NO está en ninguna lista negra.
+
+![image](https://user-images.githubusercontent.com/25957863/184044304-f94d8caa-d287-4677-ae32-d051193c1a3a.png)
+
+Tiempo usando hilos:
+	
+![image](https://user-images.githubusercontent.com/25957863/184044433-844c0e64-6822-464f-943a-16eae73e2dfa.png)
+	
+Tiempo sin usar hilos:
+
+![image](https://user-images.githubusercontent.com/25957863/184044444-5eeccdd4-f657-47b9-a6d3-dd527da3cebf.png)
 
 
 **Parte II.I Para discutir la próxima clase (NO para implementar aún)**
 
 La estrategia de paralelismo antes implementada es ineficiente en ciertos casos, pues la búsqueda se sigue realizando aún cuando los N hilos (en su conjunto) ya hayan encontrado el número mínimo de ocurrencias requeridas para reportar al servidor como malicioso. Cómo se podría modificar la implementación para minimizar el número de consultas en estos casos?, qué elemento nuevo traería esto al problema?
-
-# ARSW-LAB01
-iNTEGRANTES:
-- Yesid Camilo Mora
-- Jaime Nicolás Castro
  
-![image](https://user-images.githubusercontent.com/25957863/183934535-7df7c7fe-beb4-4f0f-930b-a903014f11a6.png)
-![image](https://user-images.githubusercontent.com/25957863/183934635-1c467c0d-00ab-495b-8c8b-04bfc89b4dc8.png)
-![image](https://user-images.githubusercontent.com/25957863/183935041-94750a44-56ab-46e8-a8f6-90ec8976f84d.png)
-![image](https://user-images.githubusercontent.com/25957863/183935070-8d2ebd25-7947-48d2-acbd-a7bc4e777925.png)
