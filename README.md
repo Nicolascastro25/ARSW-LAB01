@@ -77,24 +77,23 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 ![image](https://user-images.githubusercontent.com/25957863/184044005-47ca3156-6180-45b8-80b0-87f1470d4cf5.png)
 
-	* Dentro del método checkHost Se debe mantener el LOG que informa, antes de retornar el resultado, el número de listas negras revisadas VS. el número de listas negras total (línea 60). Se debe garantizar que dicha información sea verídica bajo el nuevo esquema de procesamiento en paralelo planteado.
+Dentro del método checkHost Se debe mantener el LOG que informa, antes de retornar el resultado, el número de listas negras revisadas VS. el número de listas negras total (línea 60). Se debe garantizar que dicha información sea verídica bajo el nuevo esquema de procesamiento en paralelo planteado.
 
-	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa.
+Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa.
 
 ![image](https://user-images.githubusercontent.com/25957863/184044162-bf9a5a22-a29e-40d1-8b60-44d99e86f3f6.png)
 
-	* Se sabe que el HOST 212.24.24.55 NO está en ninguna lista negra.
+Se sabe que el HOST 212.24.24.55 NO está en ninguna lista negra.
 
 ![image](https://user-images.githubusercontent.com/25957863/184044304-f94d8caa-d287-4677-ae32-d051193c1a3a.png)
 
 Tiempo usando hilos:
 	
-	![image](https://user-images.githubusercontent.com/25957863/184044433-844c0e64-6822-464f-943a-16eae73e2dfa.png)
-
+![image](https://user-images.githubusercontent.com/25957863/184044433-844c0e64-6822-464f-943a-16eae73e2dfa.png)
 	
 Tiempo sin usar hilos:
 
-	![image](https://user-images.githubusercontent.com/25957863/184044444-5eeccdd4-f657-47b9-a6d3-dd527da3cebf.png)
+![image](https://user-images.githubusercontent.com/25957863/184044444-5eeccdd4-f657-47b9-a6d3-dd527da3cebf.png)
 
 
 **Parte II.I Para discutir la próxima clase (NO para implementar aún)**
