@@ -10,7 +10,11 @@ package edu.eci.arsw.threads;
  * @author hcadavid
  */
 public class CountThreadsMain {
-    
+
+    /**
+     * Metodo main
+     * @param a arguments
+     */
     public static void main(String a[]){
         CountThread ct = new CountThread();
         CountThread cta = new CountThread();

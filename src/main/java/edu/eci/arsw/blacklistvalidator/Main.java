@@ -12,7 +12,11 @@ import java.util.List;
  * @author hcadavid
  */
 public class Main {
-    
+
+    /**
+     * Metodo main
+     * @param a arguments
+     */
     public static void main(String a[]){
         //HostBlackListsValidator hblv=new HostBlackListsValidator();
         //List<Integer> blackListOcurrences=hblv.checkHost("200.24.34.55");
@@ -20,7 +24,7 @@ public class Main {
 
         //LAB - 1
         HostBlackListsValidator hbla = new HostBlackListsValidator();
-        List<Integer> blackListOcurrence=hbla.checkHost("202.24.34.55", 5);       
+        List<Integer> blackListOcurrence=hbla.checkHost("202.24.34.55", 1000);
         System.out.println("The host was found in the following blacklists:"+blackListOcurrence);
     }
     

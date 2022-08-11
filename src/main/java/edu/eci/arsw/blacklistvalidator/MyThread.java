@@ -17,6 +17,13 @@ public class MyThread extends Thread {
     private int ocurrencesCount;
     private final LinkedList<Integer> blackListOcurrences;
 
+    /**
+     * Constructor de la clase
+     * @param ipAddress ip a buscar
+     * @param firstServer rango desde donde empieza a buscar
+     * @param lastServer rango hasta donde debe buscar
+     * @param skds listas
+     */
     public MyThread(String ipAddress,int firstServer, int lastServer, HostBlacklistsDataSourceFacade skds) {
         this.ipAddress = ipAddress;
         this.skds = skds;
@@ -27,6 +34,9 @@ public class MyThread extends Thread {
         blackListOcurrences = new LinkedList<>();
     }
 
+    /**
+     * Metodo overraid run
+     */
     public void run(){
         for(int i=firstServer; i<lastServer && ocurrencesCount<BLACK_LIST_ALARM_COUNT;i++){
             if(skds.isInBlackListServer(i, ipAddress)){
@@ -38,14 +48,26 @@ public class MyThread extends Thread {
         }
     }
 
+    /**
+     * Metodo get que retorna la blackListOcurrences
+     * @return blackListOcurrences
+     */
     public LinkedList<Integer> getServers(){
         return blackListOcurrences;
     }
 
+    /**
+     * Metodo get que retorna la ocurrencesCount
+     * @return ocurrencesCount
+     */
     public int getOcurrencesCount(){
         return ocurrencesCount;
     }
 
+    /**
+     * Metodo get que retorna la checkedListCount
+     * @return checkedListCount
+     */
     public int getCheckedListCount() {
         return checkedListCount;
     }
